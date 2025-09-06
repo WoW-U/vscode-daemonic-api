@@ -54,6 +54,14 @@ function DMC.InetRequest(method, url, parameters, headers) end
 ---@return string, number content, number statusCode
 function DMC.InetGetRequest(id) end
 
+---Returns if player is in world.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#IsInWorld)<br>
+---Example:
+---```lua
+---if IsInWorld() then
+---  print("Player is in world..")
+---end
+---```
 ---@return boolean
 function DMC.IsInWorld() end
 
@@ -660,8 +668,125 @@ function DMC.ObjectType(unit) end
 ---@return number CreatureType
 function DMC.UnitCreatureTypeId(unit) end
 
+---Wipes string from game memory.
+---[Docuementation](https://daemonic.cc/estore/daemonic-api/#WipeString)<br>
+---Example:
+---```lua
+---local key = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456"
+---WipeString(key)
+---key = nil
+---```
 ---@return string
 function DMC.WipeString(str) end
+
+---Returns the count of auras (including hidden ones).<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetAuraCount)<br>
+---Example:
+---```lua
+---local count = GetAuraCount('player')
+---print(count)
+---```
+---@param unit string
+---@param spellID number?
+---@return number
+function DMC.GetAuraCount(unit, spellID) end
+
+---Returns the spellID, count, duration and expiration time of a specific aura.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetAuraWithIndex)<br>
+---Example:
+---```lua
+---local count = GetAuraCount('player')
+---if count then
+---   for i = 1, count do
+---      local splId, count, duration, expirationTime = GetAuraWithIndex(i)
+---      local splName = GetSpellInfo(splId)
+---      local dispelType = GetSpellDispelType(splId)
+---      print(i, splName, splId, count, dispelType, duration, expirationTime)
+---   end
+---end
+---```
+---@param i number
+---@return number spellID, number count, number duration, number expirationTime
+function DMC.GetAuraWithIndex(i) end
+
+---Returns dispel type.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetSpellDispelType)<br>
+---Example:
+---```lua
+---local dispelName, dispelID = GetSpellDispelType(spellID)
+---```
+---@param spellID number
+---@return string dispelName, number dispelID
+function DMC.GetSpellDispelType(spellID) end
+
+---Returns dragon riding horizontal and vertical speed. Read Only.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetDragonridingSpeed)<br>
+---Example:
+---```lua
+---local horizontalMomentum, verticalMomentum = GetDragonridingSpeed("player")
+---```
+---@param unit string
+---@return number horizontalMomentum, number verticalMomentum
+function DMC.GetDragonridingSpeed(unit) end
+
+---Returns the transport the unit is moving on.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#ObjectMover)<br>
+---Example:
+---```lua
+---print(ObjectMover('player'))
+---print(ObjectName(ObjectMover('player')))
+---print(GetUnitPosition(ObjectMover('player')))
+---```
+---@param unit string
+---@return string
+function DMC.ObjectMover(unit) end
+
+---Sets any data for any given offset.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetObjectField)<br>
+---Example:
+---```lua
+---SetObjectField("player", 0x11C, 10, 1.5) -- Will set player pitch to 1.5 (Retail)
+---```
+---@param unit string
+---@param offset number
+---@param type number
+---@param data number
+function DMC.SetObjectField(unit, offset, type, data) end
+
+---Returns wow game expansion.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GameExpansion)<br>
+---Example:
+---```lua
+---print(GameExpansion()) -- returns Retail, Classic, Classic_Era
+---```
+---@return string
+function DMC.GameExpansion() end
+
+---Data compression.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#CompressString)<br>
+---Example:
+---```lua
+---local data = CompressString("Text to compress")
+---if DecompressString(data) == "Text to compress" then
+--- print("Decompress is ok")
+---end
+---```
+---@param str string
+---@return string
+function DMC.CompressString(str) end
+
+---Data decompression.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#DecompressString)<br>
+---Example:
+---```lua
+---local data = CompressString("Text to compress")
+---if DecompressString(data) == "Text to compress" then
+--- print("Decompress is ok")
+---end
+---```
+---@param compressedString string
+---@return string
+function DMC.DecompressString(compressedString) end
 
 ---Decrypt and loads lua string<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#DecryptAndLoadString)<br>
@@ -678,7 +803,7 @@ function DMC.WipeString(str) end
 ---@return function
 function DMC.DecryptAndLoadString(content, key, type, iv, debugName) end
 
----Calling this will make your player not go AFK.
+---Calling this will make your player not go AFK.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ResetAfk)<br>
 ---Example:
 ---```lua
@@ -689,6 +814,34 @@ function DMC.DecryptAndLoadString(content, key, type, iv, debugName) end
 ---AntiAFK()
 ---```
 function DMC.ResetAfk() end
+
+---Checks if game is active and foregrounded<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#IsWindowActive)<br>
+---Example:
+---```lua
+---print(IsWindowActive())
+---```
+---@return boolean
+function DMC.IsWindowActive() end
+
+---Force window to foreground.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#ActivateWindow)<br>
+---Example:
+---```lua
+---C_Timer.After(5, function()
+---    ActivateWindow()
+---end)
+---```
+function DMC.ActivateWindow() end
+
+---Plays .wave sound.
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#PlayWinSound)<br>
+---Example:
+---```lua
+---PlayWinSound(GetExeDirectoy() .. "start.wav")
+---```
+---@param waveFilePath string
+function DMC.PlayWinSound(waveFilePath) end
 
 ---Decrypt string.<br>
 ---Note: Key must be 32 character length. Third and Fourth parameters (type & iv) are optional (type by default is 3). If (iv) is defined, type must be defined as well.<br>
@@ -721,11 +874,54 @@ function DMC.DecryptString(string, key, type, iv) end
 ---@return function
 function DMC.LoadString(content) end
 
+---Returns a unique ID per game process. This ID is fixed until the game process is closed.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetSessionID)<br>
+---Example:
+---```lua
+---print(GetSessionID())
+---```
 ---@return string
 function DMC.GetSessionID() end
 
+---Returns the current session index.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetSessionIndex)<br>
+---Example:
+---```lua
+---local sidx = GetSessionIndex()
+---print(sidx)
+---```
 ---@return number
 function DMC.GetSessionIndex() end
+
+---Reads raw memory of any address.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#ReadMemory)<br>
+---Types:
+---```lua
+----- Lua Types
+---Bool = 1
+---Char = 2
+---Byte = 3
+---Short = 4
+---UShort = 5
+---Int = 6
+---UInt = 7
+---Long = 8
+---ULong = 9
+---Float = 10
+---Double = 11
+---StringType = 12
+---IntPtr = 13
+---UIntPtr = 14
+---GUID = 15
+---```
+---Example:
+---```lua
+---print(ReadMemory(0x12345678, 0, 14))
+---```
+---@param memAddress number
+---@param offset number
+---@param type number
+function DMC.ReadMemory(memAddress, offset, type) end
 
 ---Returns unit movement flags.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetUnitMovementFlags)<br>
@@ -797,6 +993,12 @@ function DMC.CancelPendingSpell() end
 ---@param z number
 function DMC.ClickPosition(x, y, z) end
 
+---Returns 3D distance between two units/objects.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetDistance3D)<br>
+---Example:
+---```lua
+---GetDistance3D("player", "target")
+---```
 ---@param x1 number
 ---@param y1 number
 ---@param z1 number
@@ -806,6 +1008,46 @@ function DMC.ClickPosition(x, y, z) end
 ---@overload fun(unit1:string, unit2:string):number
 ---@return number
 function DMC.GetDistance3D(x1, y1, z1, x2, y2, z2) end
+
+---Returns player tile x,y coordinates.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetTileByPosition)<br>
+---Example:
+---```lua
+---local x, y, z = GetUnitPosition("player")
+---print(GetTileByPosition(x,y,z))
+---```
+---@param x number
+---@param y number
+---@param z number
+---@return number x, number y
+function DMC.GetTileByPosition(x, y, z) end
+
+---Unload maps from memory.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnloadMaps)<br>
+---```lua
+---UnloadMaps()
+---```
+function DMC.UnloadMaps() end
+
+---Kills your session process.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#KillSession)<br>
+---```lua
+---KillSession()
+---```
+function DMC.KillSession() end
+
+---Returns status of Daemonic product.<br>
+---[Docuementation](https://daemonic.cc/estore/daemonic-api/#GetProductStatus)<br>
+---Example:
+---```lua
+----- 1: Retail
+----- 2: Wotlk & Era (Classic)
+---
+---print(GetProductStatus(1) == 0) -- returns true if you are using Daemonic Retail
+---```
+---@param productNumber number
+---@return boolean
+function DMC.GetProductStatus(productNumber) end
 
 ---Create a directory in specified path.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#CreateDirectory)<br>
@@ -1336,11 +1578,39 @@ function DMC.GameObjectType(unit) end
 ---@return boolean exists
 function DMC.ObjectExists(unit) end
 
+---Sets text to clipboard.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetClipboardText)<br>
+---Example:
+---```lua
+---SetClipboardText("Test")
+---```
 ---@param text string
 function DMC.SetClipboardText(text) end
 
+---Returns text from clipboard.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetClipboardText)<br>
+---Example:
+---```lua
+---print(GetClipboardText())
+---```
 ---@return string
 function DMC.GetClipboardText() end
+
+---Returns 2D distance between units/objects.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetDistance2D)<br>
+---Example:
+---```lua
+---GetDistance2D("player", "target")
+---```
+---@param x1 number
+---@param y1 number
+---@param z1 number
+---@param x2 number
+---@param y2 number
+---@param z2 number
+---@overload fun(unit1:string, unit2: string):number
+---@return number
+function DMC.GetDistance2D(x1, y1, z1, x2, y2, z2) end
 
 ---@param src string
 ---@param dest string

@@ -3,18 +3,11 @@
 
 A Visual Studio Code extension that provides Lua library definitions for **Daemonic**, enabling IntelliSense, autocompletion, and type checking for Daemonic-specific APIs.
 
+This plugin is community driven, so it would not automatically get updates when Daemonic add new function, please add them by yourself or [create an issue](https://github.com/WoW-U/vscode-daemonic-api/issues/new) and describe what should be added
+
 ## Features
 
-- **Daemonic API Definitions**: Automatically adds Daemonic Lua definitions to the `Lua.workspace.library` setting.
-- **Seamless Integration**: Works with the [Lua extension by sumneko](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) to provide IntelliSense and type checking for Daemonic APIs.
-- **Easy Setup**: Just install the extension, and it will configure everything for you.
-
-## Installation
-
-1. Open Visual Studio Code.
-2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or pressing `Ctrl+Shift+X`.
-3. Search for "Daemonic Lua API".
-4. Click **Install** to install the extension.
+- Added all methods [official API documentation](https://daemonic.cc/estore/daemonic-api/)
 
 ## Usage
 
@@ -48,13 +41,6 @@ Contributions are welcome! If you have any ideas, suggestions, or issues, please
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/WoW-U/vscode-daemonic-api/blob/main/LICENSE) file for details.
-
----
-
-## Acknowledgements
-
-- [Lua VSCode extension](https://marketplace.visualstudio.com/items?itemName=sumneko.lua) for providing excellent Lua support in VS Code.
-- [Visual Studio Code](https://code.visualstudio.com/) for the awesome editor and extension API.
 
 ---
 

@@ -506,14 +506,77 @@ function DMC.UnitIsOutdoors(unit) end
 ---@return boolean
 function DMC.UnitIsSubmerged(unit) end
 
----[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
+---Returns the unit stand state type.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitStandStateType)<br>
 ---Example:
 ---```lua
+---STAND = 0,
+---SIT = 1,
+---SIT_CHAIR = 2,
+---SLEEP = 3,
+---SIT_LOW_CHAIR = 4,
+---SIT_MEDIUM_CHAIR = 5,
+---SIT_HIGH_CHAIR = 6,
+---DEAD = 7,
+---KNEEL = 8,
+---SUBMERGED = 9,
 ---UnitStandStateType("target")
 ---```
 ---@param unit string
 ---@return number
 function DMC.UnitStandStateType(unit) end
+
+---Sends a heartbeat packet to the server.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#SendMovementHeartbeat)<br>
+---Example:
+---```lua
+---FaceDirection(angle, false)
+---SendMovementHeartbeat()
+---```
+function DMC.SendMovementHeartbeat() end
+
+---Take screenshot of wow window and save it near unlocker exe.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetScreenshot)<br>
+---Example:
+---```lua
+---GetScreenshot() -- Will save the screenshot with the following format: MMDDYY_HHMMSS_mapID_X_Y_Z
+---GetScreenshot(GetExeDirectory() .. "GatherBot.jpg") -- Will save the screenshot under the name of "GatherBot" in the provided path
+---```
+---@param filepath string? Filename format: MMDDYY_HHMMSS_mapID_X_Y_Z
+function DMC.GetScreenshot(filepath) end
+
+---Minimizes WoW window.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#MinimizeWindow)<br>
+---Example:
+---```lua
+---MinimizeWindow()
+---```
+function DMC.MinimizeWindow() end
+
+---Returns the raw position of unit.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetUnitRawPosition)<br>
+---Example:
+---```lua
+---local x, y, z = GetUnitRawPosition("player")
+---print(x,y,z)
+---```
+---@param unit string
+---@return number x, number y, number z
+function DMC.GetUnitRawPosition(unit) end
+
+---Returns the raw direction a unit is facing.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitRawFacing)<br>
+---@param unit string
+---@return number
+function DMC.UnitRawFacing(unit) end
+
+---Clears current target.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#ClearTargetUnit)<br>
+---Example:
+---```lua
+---ClearTargetUnit()
+---```
+function DMC.ClearTargetUnit() end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -761,6 +824,136 @@ function DMC.SetObjectField(unit, offset, type, data) end
 ---```
 ---@return string
 function DMC.GameExpansion() end
+
+---Encrypt luaCode to be used with the following APIs:<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#EncryptCode)<br>
+---Example:
+---```lua
+---local codes = EncryptCode("print('test')")
+---LoadStringEnc(codes)()
+---```
+---@see DMC.LoadStringEnc
+---@see DMC.RequireCodeEnc
+---@see DMC.RequireFileEnc
+---@param luaCode string
+---@return string
+function DMC.EncryptCode(luaCode) end
+
+---Runs lua codes provided in the code parameter.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#RequireCode)<br>
+---Example:
+---```lua
+----- res1: Return code running status (true or false).
+----- res2: Returned data by code or error information or nil.
+----- debugname: Will be displayed in errors, e.g: file name.
+----- variables: Will be passed to the codes by order.
+---
+----- Usage Example:
+---
+---local var1 = 1000
+---local code = "local var1 = ...; var1 = var1 + 1; return var1;"
+---local res1, res2 = RequireCode(code, "testcode", var1)
+---if res1 then
+---  print("result is:", res2)
+---else
+---  print("error is:", res2)
+---end
+---```
+---@param code string
+---@param debugname string?
+---@param ... any
+---@return boolean status, any dataOrErr 
+function DMC.RequireCode(code, debugname, ...) end
+
+---Runs encrypted lua codes provided in the code parameter which is encrypted using [EncryptCode](lua://DMC.EncryptCode).<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#RequireCodeEnc)<br>
+---@param encryptedCode string
+---@param debugname string?
+---@param ... any
+---@return boolean status, any dataOrErr
+function DMC.RequireCodeEnc(encryptedCode, debugname, ...) end
+
+---Loads encrypted string from [EncryptCode](lua://DMC.EncryptCode) API<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#LoadStringEnc)
+---@see DMC.EncryptCode
+---@param encryptedString string
+---@param debugName string
+---@return function
+function DMC.LoadStringEnc(encryptedString, debugName) end
+
+---Runs lua file provided in the file parameter.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#RequireFile)<br>
+---Example: 
+---```lua
+----- res1: Return code running status (true or false).
+----- res2: Returned data by code or error information or nil.
+----- variables: Will be passed to the codes by order.
+----- File path must be relative and only from client directory and sub directories.
+---
+----- Usage Example:
+---  
+---local mybot = {}
+---local res1, res2 = RequireFile("file.lua", mybot)
+---```
+---@param file string
+---@param ... any
+---@return boolean status, any dataOrErr
+function DMC.RequireFile(file, ...) end
+
+---Runs encrypted lua file provided in the file parameter which is encrypted using [EncryptCode](lua://DMC.EncryptCode)<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#RequireFileEnc)<br>
+---Example:
+---```lua
+----- res1: Return code running status (true or false).
+----- res2: Returned data by code or error information or nil.
+----- variables: Will be passed to the codes by order.
+----- File path must be relative and only from client directory and sub directories.
+---
+----- Usage Example:
+---  
+---local mybot = {}
+---local res1, res2 = RequireFileEnc("encryptedfile.lua", mybot)
+---```
+---@param file string
+---@param ... any
+---@return boolean status, any dataOrErr
+function DMC.RequireFileEnc(file, ...) end
+
+---Encode lua table to json string.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#JsonEncode)<br>
+---Example:
+---```lua
+---local tbl = {sale = true}
+---print(JsonEncode(tbl))
+---```
+---@param data any
+---@return string
+function DMC.JsonEncode(data) end
+
+---Decode json string to lua table.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#JsonDecode)<br>
+---Example:
+---```lua
+---local tbl = JsonDecode('{"sale":true}')
+---if tbl.sale then
+---  print('sale is true')
+---else
+---  print('sale is false')
+---end
+---```
+---@param str string
+---@return any
+function DMC.JsonDecode(str) end
+
+---Returns actual widow size.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GameWindowSize)
+---@return number width, number height, any scale
+function DMC.GameWindowSize() end
+
+---Description: Returns different camera data.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetCameraData)<br>
+---@return number camX, number camY, number camZ, any matrixYX, any matrixYY, any matrixYZ, any matrixZX, any matrixZY, any matrixZZ, any matrixXX, any matrixXY, any matrixXZ, number camFov, number camYaw, number camPitch, number camRoll
+function DMC.GetCameraData() end
 
 ---Data compression.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#CompressString)<br>
@@ -1490,6 +1683,39 @@ function DMC.GetCameraPosition() end
 ---@return number x, number y, number z
 function DMC.GetLastClickPosition() end
 
+---Returns current MapID.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetMapID)<br>
+---Example:
+---```lua
+---print(GetMapID())
+---```
+---@return number
+function DMC.GetMapID() end
+
+---Moves and resizes game window to desired screen coordinates and size.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#MoveWindow)<br>
+---Example:
+---```lua
+---MoveWindow(0, 0) -- will move window to top left
+---
+---MoveWindow(0, 0, 1360, 768) -- will move window to top left and resize window to 1360x768
+---```
+---@param x number
+---@param y number
+---@param w number?
+---@param h number?
+function DMC.MoveWindow(x, y, w, h) end
+
+---Returns unit effect spellID and location (x,y,z).<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitEffect)<br>
+---Example:
+---```lua
+---local x, y, z, spellID = UnitEffect(unit)
+---```
+---@param unit string
+---@return number x, number y, number z, number spellID
+function DMC.UnitEffect(unit) end
+
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GameObjectType)<br>
 ---Types:
 ---```lua
@@ -1612,13 +1838,149 @@ function DMC.GetClipboardText() end
 ---@return number
 function DMC.GetDistance2D(x1, y1, z1, x2, y2, z2) end
 
+---Copies file from source path to destination.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#CopyFile)<br>
+---Example:
+---```lua
+---CopyFile(GetExeDirectory() .. "file.lua", GetWowDirectory() .. "Interface\\AddOns\\file.lua")
+---```
 ---@param src string
 ---@param dest string
 function DMC.CopyFile(src, dest) end
 
+---Copies directory and all included files and sub directories from source path to destination.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#CopyDirectory)<br>
+---Example:
+---```lua
+---CopyDirectory(GetExeDirectory() .. "MyAddonFolder", GetWowDirectory() .. "Interface\\AddOns\\MyAddonFolder")
+---```
 ---@param src string
 ---@param dest string
 function DMC.CopyDirectory(src, dest) end
+
+---Removes directory and all included files and sub directories.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#RemoveDirectory)<br>
+---Example:
+---```lua
+---RemoveDirectory(GetExeDirectory() .. "MyAddonFolder")
+---```
+---@param path string
+function DMC.RemoveDirectory(path) end
+
+---Gets hardware ID.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetHWID)<br>
+---Example:
+---```lua
+---print(GetHWID())
+---```
+---@return string
+function DMC.GetHWID() end
+
+---Prevent screenshots and recordings.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#EnableAntiCapture)<br>
+---Example:
+---```lua
+---EnableAntiCapture()
+---```
+function DMC.EnableAntiCapture() end
+
+---Finds closest point on mesh at a given threshold.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#FindClosestPointOnMesh)<br>
+---Example:
+---```lua
+---local tx, ty, tz = GetUnitPosition('target')
+---local mapId = GetMapID()
+---local res, x, y, z = FindClosestPointOnMesh(mapId, tx, ty, tz, 0, 0, 200)
+---if res == nil then
+---  print('Invalid or nil arguments!')
+---elseif res == 0 then
+---  print('Not found any closest point!')
+---elseif res == -1 then
+---  print('Map files not exists or invalid!')
+---elseif res == -2 then
+---  print('Out of memeory!')
+---elseif res == -3 then
+---  print('Map caching...')
+---else
+---  print(x, y, z)
+---end
+---```
+---@param mapid number
+---@param x number
+---@param y number
+---@param z number
+---@param dx number
+---@param dy number
+---@param dz number
+---@return number res, number x, number y, number z
+function DMC.FindClosestPointOnMesh(mapid, x, y, z, dx, dy, dz) end
+
+---Sets mouse over object.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetMouseOverObject)<br>
+---Example:
+---```lua
+---SetMouseOverObject(object)
+---```
+---@param object string
+function DMC.SetMouseOverObject(object) end
+
+---Stops you from falling.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#StopFalling)<br>
+---Example
+---```lua
+---SecureCode("JumpOrAscendStart")
+---C_Timer.After(0.4, function() StopFalling() end)
+---```
+function DMC.StopFalling() end
+
+---Sets the value for a global variable (will not destroy after reload).<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetGlobalVar)<br>
+---Example:
+---```lua
+---SetGlobalVar("test", "test data")
+---```
+---@param name string
+---@param data any
+function DMC.SetGlobalVar(name, data) end
+
+---Gets the value of the global variable previously set by [SetGlobalVar](lua://DMC.SetGlobalVar).<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetGlobalVar)<br>
+---Example:
+---```lua
+---local data = GetGlobalVar("test")
+---```
+---@param name string
+---@return any data
+function DMC.GetGlobalVar(name) end
+
+---Reloads the game.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#ReloadGame)<br>
+---Example:
+---```lua
+---ReloadGame()
+---```
+function DMC.ReloadGame() end
+
+---Return if account is in Glue Screen.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#IsInGlue)<br>
+---Example:
+---```lua
+---if IsInGlue() then
+---  -- you are in GlueScreen
+---end
+---```
+---@return boolean
+function DMC.IsInGlue() end
+
+---Quickly disconnects user from server.<br>
+---[Documentation](https://daemonic.cc/estore/daemonic-api/#DisconnectFromServer)<br>
+---Example:
+---```lua
+---if IsInWorld() then
+---  DisconnectFromServer()
+---end
+---```
+function DMC.DisconnectFromServer() end
 
 ---DMC Draw Library
 ---@class DMC.Draw

@@ -7,7 +7,7 @@ This plugin is community driven, so it would not automatically get updates when 
 
 ## Features
 
-- Added all methods [official API documentation](https://daemonic.cc/estore/daemonic-api/)
+- Added all methods from [official API documentation](https://daemonic.cc/estore/daemonic-api/)
 
 ## Usage
 

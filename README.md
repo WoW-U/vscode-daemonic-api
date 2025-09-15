@@ -5,6 +5,8 @@ A Visual Studio Code extension that provides Lua library definitions for **Daemo
 
 This plugin is community driven, so it would not automatically get updates when Daemonic add new function, please add them by yourself or [create an issue](https://github.com/WoW-U/vscode-daemonic-api/issues/new) and describe what should be added
 
+[Join Discord](https://discord.gg/Gc4GjArZus) to discuss and participate.
+
 ## Features
 
 - Added all methods from [official API documentation](https://daemonic.cc/estore/daemonic-api/)

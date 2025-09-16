@@ -1,7 +1,9 @@
 ---@meta _
 
----@class DMC
-DMC = {}
+---@class Daemonic
+Daemonic = {}
+
+---@alias DMC Daemonic
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#SecureCode)<br>
 ---Example:
@@ -11,7 +13,7 @@ DMC = {}
 ---
 ---@param funcName string|function
 ---@param ... any
-function DMC.SecureCode(funcName, ...) end
+function Daemonic.SecureCode(funcName, ...) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#Synchronous&Asynchronous)<br>
 ---Example:
@@ -49,10 +51,10 @@ function DMC.SecureCode(funcName, ...) end
 ---@param parameters string
 ---@param headers string
 ---@return any id
-function DMC.InetRequest(method, url, parameters, headers) end
+function Daemonic.InetRequest(method, url, parameters, headers) end
 
 ---@return string, number content, number statusCode
-function DMC.InetGetRequest(id) end
+function Daemonic.InetGetRequest(id) end
 
 ---Returns if player is in world.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#IsInWorld)<br>
@@ -63,7 +65,7 @@ function DMC.InetGetRequest(id) end
 ---end
 ---```
 ---@return boolean
-function DMC.IsInWorld() end
+function Daemonic.IsInWorld() end
 
 ---Check if file exists in path.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#FileExists)<br>
@@ -73,7 +75,7 @@ function DMC.IsInWorld() end
 ---```
 ---@param filePath string
 ---@return boolean
-function DMC.FileExists(filePath) end
+function Daemonic.FileExists(filePath) end
 
 ---Returns Daemonic exe directory path.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetExeDirectory)<br>
@@ -82,7 +84,7 @@ function DMC.FileExists(filePath) end
 ---print(GetExeDirectory())
 ---```
 ---@return string
-function DMC.GetExeDirectory() end
+function Daemonic.GetExeDirectory() end
 
 ---Shows the directory path of wow.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetWowDirectory)<br>
@@ -91,7 +93,7 @@ function DMC.GetExeDirectory() end
 ---print(GetWowDirectory())
 ---```
 ---@return string
-function DMC.GetWowDirectory() end
+function Daemonic.GetWowDirectory() end
 
 ---Checks if directory exists in specified path.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#DirectoryExists)<br>
@@ -103,7 +105,7 @@ function DMC.GetWowDirectory() end
 ---```
 ---@param dirPath string
 ---@return boolean
-function DMC.DirectoryExists(dirPath) end
+function Daemonic.DirectoryExists(dirPath) end
 
 ---Checks if path is writable.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#IsWritablePath)<br>
@@ -115,7 +117,7 @@ function DMC.DirectoryExists(dirPath) end
 ---```
 ---@param path string
 ---@return boolean
-function DMC.IsWritablePath(path) end
+function Daemonic.IsWritablePath(path) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetUnitPosition)<br>
 ---Example:
@@ -125,7 +127,7 @@ function DMC.IsWritablePath(path) end
 ---```
 ---@param unit string
 ---@return number x, number y, number z
-function DMC.GetUnitPosition(unit) end
+function Daemonic.GetUnitPosition(unit) end
 
 ---Delete any targeted files in path.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#DeleteFile)<br>
@@ -136,7 +138,7 @@ function DMC.GetUnitPosition(unit) end
 ---DeleteFile(GetWowDirectory() .. "example2.lua")
 ---```
 ---@param path string
-function DMC.DeleteFile(path) end
+function Daemonic.DeleteFile(path) end
 
 ---Delete any targeted directory in path.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#DeleteDirectory)<br>
@@ -147,7 +149,7 @@ function DMC.DeleteFile(path) end
 ---DeleteDirectory(GetWowDirectory() .. "example2")
 ---```
 ---@param path string
-function DMC.DeleteDirectory(path) end
+function Daemonic.DeleteDirectory(path) end
 
 ---Encrypt AutoLoad files for Daemonic client.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#EncryptAutoLoad)<br>
@@ -157,7 +159,7 @@ function DMC.DeleteDirectory(path) end
 ---```
 ---@param inputFilePath string
 ---@param outputFilePath string
-function DMC.EncryptAutoLoad(inputFilePath, outputFilePath) end
+function Daemonic.EncryptAutoLoad(inputFilePath, outputFilePath) end
 
 ---Encrypt string using any of the three different encryption types shown below.<br>
 ---Note: Key must be 32 character length. Third and Fourth parameters (type & iv) are optional (type by default is 3). If (iv) is defined, type must be defined as well.<br>
@@ -185,7 +187,7 @@ function DMC.EncryptAutoLoad(inputFilePath, outputFilePath) end
 ---@param type number?
 ---@param iv string?
 ---@return string
-function DMC.EncryptString(msg, key, type, iv) end
+function Daemonic.EncryptString(msg, key, type, iv) end
 
 ---Hash string using any of the three different Hash types as shown below.<br>
 ---Types: 
@@ -211,7 +213,7 @@ function DMC.EncryptString(msg, key, type, iv) end
 ---@param msg string
 ---@param type number
 ---@return string
-function DMC.HashString(msg, type) end
+function Daemonic.HashString(msg, type) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#TraceLine)<br>
 ---Flags:
@@ -244,7 +246,7 @@ function DMC.HashString(msg, type) end
 ---@param ez number
 ---@param flags any
 ---@return number hit, number x, number y, number z
-function DMC.TraceLine(sx, sy, sz, ex, ey, ez, flags) end
+function Daemonic.TraceLine(sx, sy, sz, ex, ey, ez, flags) end
 
 ---Lists files in directory..<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetDirectoryFiles)<br>
@@ -255,7 +257,7 @@ function DMC.TraceLine(sx, sy, sz, ex, ey, ez, flags) end
 ---@param directory string
 ---@param pattern string
 ---@return string @all files with `|` delimeter
-function DMC.GetDirectoryFiles(directory, pattern) end
+function Daemonic.GetDirectoryFiles(directory, pattern) end
 
 ---Lists folders in directory.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetDirectoryFolders)<br>
@@ -266,7 +268,7 @@ function DMC.GetDirectoryFiles(directory, pattern) end
 ---@param path string
 ---@param pattern string
 ---@return string @all files with `|` delimeter
-function DMC.GetDirectoryFolders(path, pattern) end
+function Daemonic.GetDirectoryFolders(path, pattern) end
 
 ---Reads file and returns its content.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ReadFile)<br>
@@ -278,7 +280,7 @@ function DMC.GetDirectoryFolders(path, pattern) end
 ---```
 ---@param filePath string path to a file
 ---@return string @File's content
-function DMC.ReadFile(filePath) end
+function Daemonic.ReadFile(filePath) end
 
 ---Returns the count of all world objects, as well as the changes compared to the last call.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetObjectCount)<br>
@@ -287,7 +289,7 @@ function DMC.ReadFile(filePath) end
 ---print(GetObjectCount())
 ---```
 ---@return number
-function DMC.GetObjectCount() end
+function Daemonic.GetObjectCount() end
 
 ---Returns a specific world object by its index in the saved memory objects from the previous call to GetObjectCount.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetObjectWithIndex)<br>
@@ -300,10 +302,10 @@ function DMC.GetObjectCount() end
 ---   end
 ---end
 ---```
----@see DMC.GetObjectCount
+---@see Daemonic.GetObjectCount
 ---@param index number
 ---@return string unit
-function DMC.GetObjectWithIndex(index) end
+function Daemonic.GetObjectWithIndex(index) end
 
 ---Reads raw memory of a unit.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ObjectField)<br>
@@ -333,7 +335,7 @@ function DMC.GetObjectWithIndex(index) end
 ---@param unit string
 ---@param offset number
 ---@param type number
-function DMC.ObjectField(unit, offset, type) end
+function Daemonic.ObjectField(unit, offset, type) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -342,7 +344,7 @@ function DMC.ObjectField(unit, offset, type) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitPitch(unit) end
+function Daemonic.UnitPitch(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -351,7 +353,7 @@ function DMC.UnitPitch(unit) end
 ---```
 ---@param unit string
 ---@return string
-function DMC.UnitSummonedBy(unit) end
+function Daemonic.UnitSummonedBy(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -360,7 +362,7 @@ function DMC.UnitSummonedBy(unit) end
 ---```
 ---@param unit string
 ---@return string
-function DMC.UnitCreatedBy(unit) end
+function Daemonic.UnitCreatedBy(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -369,7 +371,7 @@ function DMC.UnitCreatedBy(unit) end
 ---```
 ---@param unit string
 ---@return string
-function DMC.UnitTarget(unit) end
+function Daemonic.UnitTarget(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -378,7 +380,7 @@ function DMC.UnitTarget(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitHeight(unit) end
+function Daemonic.UnitHeight(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -387,7 +389,7 @@ function DMC.UnitHeight(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitFlags(unit) end
+function Daemonic.UnitFlags(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -396,7 +398,7 @@ function DMC.UnitFlags(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitFlags2(unit) end
+function Daemonic.UnitFlags2(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -405,7 +407,7 @@ function DMC.UnitFlags2(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitFlags3(unit) end
+function Daemonic.UnitFlags3(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -414,7 +416,7 @@ function DMC.UnitFlags3(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitNpcFlags(unit) end
+function Daemonic.UnitNpcFlags(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -423,7 +425,7 @@ function DMC.UnitNpcFlags(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitBoundingRadius(unit) end
+function Daemonic.UnitBoundingRadius(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -432,7 +434,7 @@ function DMC.UnitBoundingRadius(unit) end
 ---```
 ---@param unit string
 ---@return any
-function DMC.UnitCombatReach(unit) end
+function Daemonic.UnitCombatReach(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -441,7 +443,7 @@ function DMC.UnitCombatReach(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitDynamicFlags(unit) end
+function Daemonic.UnitDynamicFlags(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -450,7 +452,7 @@ function DMC.UnitDynamicFlags(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitAnimationFlags(unit) end
+function Daemonic.UnitAnimationFlags(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -459,7 +461,7 @@ function DMC.UnitAnimationFlags(unit) end
 ---```
 ---@param unit string
 ---@return boolean
-function DMC.UnitIsSkinnable(unit) end
+function Daemonic.UnitIsSkinnable(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -468,7 +470,7 @@ function DMC.UnitIsSkinnable(unit) end
 ---```
 ---@param unit string
 ---@return boolean
-function DMC.UnitIsLootable(unit) end
+function Daemonic.UnitIsLootable(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -477,7 +479,7 @@ function DMC.UnitIsLootable(unit) end
 ---```
 ---@param unit string
 ---@return string
-function DMC.UnitCastingTarget(unit) end
+function Daemonic.UnitCastingTarget(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -486,7 +488,7 @@ function DMC.UnitCastingTarget(unit) end
 ---```
 ---@param unit string
 ---@return boolean
-function DMC.UnitIsMounted(unit) end
+function Daemonic.UnitIsMounted(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -495,7 +497,7 @@ function DMC.UnitIsMounted(unit) end
 ---```
 ---@param unit string
 ---@return boolean
-function DMC.UnitIsOutdoors(unit) end
+function Daemonic.UnitIsOutdoors(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -504,7 +506,7 @@ function DMC.UnitIsOutdoors(unit) end
 ---```
 ---@param unit string
 ---@return boolean
-function DMC.UnitIsSubmerged(unit) end
+function Daemonic.UnitIsSubmerged(unit) end
 
 ---Returns the unit stand state type.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitStandStateType)<br>
@@ -524,7 +526,7 @@ function DMC.UnitIsSubmerged(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitStandStateType(unit) end
+function Daemonic.UnitStandStateType(unit) end
 
 ---Sends a heartbeat packet to the server.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#SendMovementHeartbeat)<br>
@@ -533,7 +535,7 @@ function DMC.UnitStandStateType(unit) end
 ---FaceDirection(angle, false)
 ---SendMovementHeartbeat()
 ---```
-function DMC.SendMovementHeartbeat() end
+function Daemonic.SendMovementHeartbeat() end
 
 ---Take screenshot of wow window and save it near unlocker exe.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetScreenshot)<br>
@@ -543,7 +545,7 @@ function DMC.SendMovementHeartbeat() end
 ---GetScreenshot(GetExeDirectory() .. "GatherBot.jpg") -- Will save the screenshot under the name of "GatherBot" in the provided path
 ---```
 ---@param filepath string? Filename format: MMDDYY_HHMMSS_mapID_X_Y_Z
-function DMC.GetScreenshot(filepath) end
+function Daemonic.GetScreenshot(filepath) end
 
 ---Minimizes WoW window.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#MinimizeWindow)<br>
@@ -551,7 +553,7 @@ function DMC.GetScreenshot(filepath) end
 ---```lua
 ---MinimizeWindow()
 ---```
-function DMC.MinimizeWindow() end
+function Daemonic.MinimizeWindow() end
 
 ---Returns the raw position of unit.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetUnitRawPosition)<br>
@@ -562,13 +564,13 @@ function DMC.MinimizeWindow() end
 ---```
 ---@param unit string
 ---@return number x, number y, number z
-function DMC.GetUnitRawPosition(unit) end
+function Daemonic.GetUnitRawPosition(unit) end
 
 ---Returns the raw direction a unit is facing.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitRawFacing)<br>
 ---@param unit string
 ---@return number
-function DMC.UnitRawFacing(unit) end
+function Daemonic.UnitRawFacing(unit) end
 
 ---Clears current target.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ClearTargetUnit)<br>
@@ -576,7 +578,7 @@ function DMC.UnitRawFacing(unit) end
 ---```lua
 ---ClearTargetUnit()
 ---```
-function DMC.ClearTargetUnit() end
+function Daemonic.ClearTargetUnit() end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -585,7 +587,7 @@ function DMC.ClearTargetUnit() end
 ---```
 ---@param unit string
 ---@return boolean
-function DMC.UnitIsSitting(unit) end
+function Daemonic.UnitIsSitting(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
 ---Example:
@@ -594,7 +596,7 @@ function DMC.UnitIsSitting(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitSpecializationID(unit) end
+function Daemonic.UnitSpecializationID(unit) end
 
 
 ---Verifies that a variable is a valid GUID. Returns 1 or nil.
@@ -609,7 +611,7 @@ function DMC.UnitSpecializationID(unit) end
 ---```
 ---@param guid string
 ---@return boolean
-function DMC.IsGUID(guid) end
+function Daemonic.IsGUID(guid) end
 
 ---Returns the display name of a unit.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ObjectName)<br>
@@ -619,7 +621,7 @@ function DMC.IsGUID(guid) end
 ---```
 ---@param unit string
 ---@return string Name
-function DMC.ObjectName(unit) end
+function Daemonic.ObjectName(unit) end
 
 ---Returns the id of an object.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ObjectID)<br>
@@ -634,7 +636,7 @@ function DMC.ObjectName(unit) end
 ---```
 ---@param unit string
 ---@return number ID
-function DMC.ObjectID(unit) end
+function Daemonic.ObjectID(unit) end
 
 ---Returns the number of missiles.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetMissileCount)<br>
@@ -643,7 +645,7 @@ function DMC.ObjectID(unit) end
 ---print(GetMissileCount())
 ---```
 ---@return number
-function DMC.GetMissileCount() end
+function Daemonic.GetMissileCount() end
 
 ---Returns the info of a specific missile.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetMissileWithIndex)<br>
@@ -671,7 +673,7 @@ function DMC.GetMissileCount() end
 ---```
 ---@param index number
 ---@return number spellID, number spellVisualID, number x, number y, number z, string caster, number sx, number sy, number sz, string target, number tx, number ty, number tz
-function DMC.GetMissileWithIndex(index) end
+function Daemonic.GetMissileWithIndex(index) end
 
 ---Returns unit type.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ObjectType)<br>
@@ -702,7 +704,7 @@ function DMC.GetMissileWithIndex(index) end
 ---```
 ---@param unit string
 ---@return number Type
-function DMC.ObjectType(unit) end
+function Daemonic.ObjectType(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitCreatureTypeId)<br>
 ---Types:
@@ -729,7 +731,7 @@ function DMC.ObjectType(unit) end
 ---```
 ---@param unit string
 ---@return number CreatureType
-function DMC.UnitCreatureTypeId(unit) end
+function Daemonic.UnitCreatureTypeId(unit) end
 
 ---Wipes string from game memory.
 ---[Docuementation](https://daemonic.cc/estore/daemonic-api/#WipeString)<br>
@@ -740,7 +742,7 @@ function DMC.UnitCreatureTypeId(unit) end
 ---key = nil
 ---```
 ---@return string
-function DMC.WipeString(str) end
+function Daemonic.WipeString(str) end
 
 ---Returns the count of auras (including hidden ones).<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetAuraCount)<br>
@@ -752,7 +754,7 @@ function DMC.WipeString(str) end
 ---@param unit string
 ---@param spellID number?
 ---@return number
-function DMC.GetAuraCount(unit, spellID) end
+function Daemonic.GetAuraCount(unit, spellID) end
 
 ---Returns the spellID, count, duration and expiration time of a specific aura.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetAuraWithIndex)<br>
@@ -770,7 +772,7 @@ function DMC.GetAuraCount(unit, spellID) end
 ---```
 ---@param i number
 ---@return number spellID, number count, number duration, number expirationTime
-function DMC.GetAuraWithIndex(i) end
+function Daemonic.GetAuraWithIndex(i) end
 
 ---Returns dispel type.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetSpellDispelType)<br>
@@ -780,7 +782,7 @@ function DMC.GetAuraWithIndex(i) end
 ---```
 ---@param spellID number
 ---@return string dispelName, number dispelID
-function DMC.GetSpellDispelType(spellID) end
+function Daemonic.GetSpellDispelType(spellID) end
 
 ---Returns dragon riding horizontal and vertical speed. Read Only.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetDragonridingSpeed)<br>
@@ -790,7 +792,7 @@ function DMC.GetSpellDispelType(spellID) end
 ---```
 ---@param unit string
 ---@return number horizontalMomentum, number verticalMomentum
-function DMC.GetDragonridingSpeed(unit) end
+function Daemonic.GetDragonridingSpeed(unit) end
 
 ---Returns the transport the unit is moving on.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ObjectMover)<br>
@@ -802,7 +804,7 @@ function DMC.GetDragonridingSpeed(unit) end
 ---```
 ---@param unit string
 ---@return string
-function DMC.ObjectMover(unit) end
+function Daemonic.ObjectMover(unit) end
 
 ---Sets any data for any given offset.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetObjectField)<br>
@@ -814,7 +816,7 @@ function DMC.ObjectMover(unit) end
 ---@param offset number
 ---@param type number
 ---@param data number
-function DMC.SetObjectField(unit, offset, type, data) end
+function Daemonic.SetObjectField(unit, offset, type, data) end
 
 ---Returns wow game expansion.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GameExpansion)<br>
@@ -823,7 +825,7 @@ function DMC.SetObjectField(unit, offset, type, data) end
 ---print(GameExpansion()) -- returns Retail, Classic, Classic_Era
 ---```
 ---@return string
-function DMC.GameExpansion() end
+function Daemonic.GameExpansion() end
 
 ---Encrypt luaCode to be used with the following APIs:<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#EncryptCode)<br>
@@ -832,12 +834,12 @@ function DMC.GameExpansion() end
 ---local codes = EncryptCode("print('test')")
 ---LoadStringEnc(codes)()
 ---```
----@see DMC.LoadStringEnc
----@see DMC.RequireCodeEnc
----@see DMC.RequireFileEnc
+---@see Daemonic.LoadStringEnc
+---@see Daemonic.RequireCodeEnc
+---@see Daemonic.RequireFileEnc
 ---@param luaCode string
 ---@return string
-function DMC.EncryptCode(luaCode) end
+function Daemonic.EncryptCode(luaCode) end
 
 ---Runs lua codes provided in the code parameter.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#RequireCode)<br>
@@ -863,23 +865,23 @@ function DMC.EncryptCode(luaCode) end
 ---@param debugname string?
 ---@param ... any
 ---@return boolean status, any dataOrErr 
-function DMC.RequireCode(code, debugname, ...) end
+function Daemonic.RequireCode(code, debugname, ...) end
 
----Runs encrypted lua codes provided in the code parameter which is encrypted using [EncryptCode](lua://DMC.EncryptCode).<br>
+---Runs encrypted lua codes provided in the code parameter which is encrypted using [EncryptCode](lua://Daemonic.EncryptCode).<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#RequireCodeEnc)<br>
 ---@param encryptedCode string
 ---@param debugname string?
 ---@param ... any
 ---@return boolean status, any dataOrErr
-function DMC.RequireCodeEnc(encryptedCode, debugname, ...) end
+function Daemonic.RequireCodeEnc(encryptedCode, debugname, ...) end
 
----Loads encrypted string from [EncryptCode](lua://DMC.EncryptCode) API<br>
+---Loads encrypted string from [EncryptCode](lua://Daemonic.EncryptCode) API<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#LoadStringEnc)
----@see DMC.EncryptCode
+---@see Daemonic.EncryptCode
 ---@param encryptedString string
 ---@param debugName string
 ---@return function
-function DMC.LoadStringEnc(encryptedString, debugName) end
+function Daemonic.LoadStringEnc(encryptedString, debugName) end
 
 ---Runs lua file provided in the file parameter.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#RequireFile)<br>
@@ -898,9 +900,9 @@ function DMC.LoadStringEnc(encryptedString, debugName) end
 ---@param file string
 ---@param ... any
 ---@return boolean status, any dataOrErr
-function DMC.RequireFile(file, ...) end
+function Daemonic.RequireFile(file, ...) end
 
----Runs encrypted lua file provided in the file parameter which is encrypted using [EncryptCode](lua://DMC.EncryptCode)<br>
+---Runs encrypted lua file provided in the file parameter which is encrypted using [EncryptCode](lua://Daemonic.EncryptCode)<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#RequireFileEnc)<br>
 ---Example:
 ---```lua
@@ -917,7 +919,7 @@ function DMC.RequireFile(file, ...) end
 ---@param file string
 ---@param ... any
 ---@return boolean status, any dataOrErr
-function DMC.RequireFileEnc(file, ...) end
+function Daemonic.RequireFileEnc(file, ...) end
 
 ---Encode lua table to json string.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#JsonEncode)<br>
@@ -928,7 +930,7 @@ function DMC.RequireFileEnc(file, ...) end
 ---```
 ---@param data any
 ---@return string
-function DMC.JsonEncode(data) end
+function Daemonic.JsonEncode(data) end
 
 ---Decode json string to lua table.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#JsonDecode)<br>
@@ -943,17 +945,17 @@ function DMC.JsonEncode(data) end
 ---```
 ---@param str string
 ---@return any
-function DMC.JsonDecode(str) end
+function Daemonic.JsonDecode(str) end
 
 ---Returns actual widow size.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GameWindowSize)
 ---@return number width, number height, any scale
-function DMC.GameWindowSize() end
+function Daemonic.GameWindowSize() end
 
 ---Description: Returns different camera data.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetCameraData)<br>
 ---@return number camX, number camY, number camZ, any matrixYX, any matrixYY, any matrixYZ, any matrixZX, any matrixZY, any matrixZZ, any matrixXX, any matrixXY, any matrixXZ, number camFov, number camYaw, number camPitch, number camRoll
-function DMC.GetCameraData() end
+function Daemonic.GetCameraData() end
 
 ---Data compression.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#CompressString)<br>
@@ -966,7 +968,7 @@ function DMC.GetCameraData() end
 ---```
 ---@param str string
 ---@return string
-function DMC.CompressString(str) end
+function Daemonic.CompressString(str) end
 
 ---Data decompression.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#DecompressString)<br>
@@ -979,7 +981,7 @@ function DMC.CompressString(str) end
 ---```
 ---@param compressedString string
 ---@return string
-function DMC.DecompressString(compressedString) end
+function Daemonic.DecompressString(compressedString) end
 
 ---Decrypt and loads lua string<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#DecryptAndLoadString)<br>
@@ -994,7 +996,7 @@ function DMC.DecompressString(compressedString) end
 ---@param iv string?
 ---@param debugName string?
 ---@return function
-function DMC.DecryptAndLoadString(content, key, type, iv, debugName) end
+function Daemonic.DecryptAndLoadString(content, key, type, iv, debugName) end
 
 ---Calling this will make your player not go AFK.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ResetAfk)<br>
@@ -1006,7 +1008,7 @@ function DMC.DecryptAndLoadString(content, key, type, iv, debugName) end
 ---end
 ---AntiAFK()
 ---```
-function DMC.ResetAfk() end
+function Daemonic.ResetAfk() end
 
 ---Checks if game is active and foregrounded<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#IsWindowActive)<br>
@@ -1015,7 +1017,7 @@ function DMC.ResetAfk() end
 ---print(IsWindowActive())
 ---```
 ---@return boolean
-function DMC.IsWindowActive() end
+function Daemonic.IsWindowActive() end
 
 ---Force window to foreground.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ActivateWindow)<br>
@@ -1025,7 +1027,7 @@ function DMC.IsWindowActive() end
 ---    ActivateWindow()
 ---end)
 ---```
-function DMC.ActivateWindow() end
+function Daemonic.ActivateWindow() end
 
 ---Plays .wave sound.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#PlayWinSound)<br>
@@ -1034,7 +1036,7 @@ function DMC.ActivateWindow() end
 ---PlayWinSound(GetExeDirectoy() .. "start.wav")
 ---```
 ---@param waveFilePath string
-function DMC.PlayWinSound(waveFilePath) end
+function Daemonic.PlayWinSound(waveFilePath) end
 
 ---Decrypt string.<br>
 ---Note: Key must be 32 character length. Third and Fourth parameters (type & iv) are optional (type by default is 3). If (iv) is defined, type must be defined as well.<br>
@@ -1054,7 +1056,7 @@ function DMC.PlayWinSound(waveFilePath) end
 ---@param type number
 ---@param iv string
 ---@return string
-function DMC.DecryptString(string, key, type, iv) end
+function Daemonic.DecryptString(string, key, type, iv) end
 
 ---Loads lua string.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#LoadString)<br>
@@ -1065,7 +1067,7 @@ function DMC.DecryptString(string, key, type, iv) end
 ---```
 ---@param content string
 ---@return function
-function DMC.LoadString(content) end
+function Daemonic.LoadString(content) end
 
 ---Returns a unique ID per game process. This ID is fixed until the game process is closed.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetSessionID)<br>
@@ -1074,7 +1076,7 @@ function DMC.LoadString(content) end
 ---print(GetSessionID())
 ---```
 ---@return string
-function DMC.GetSessionID() end
+function Daemonic.GetSessionID() end
 
 ---Returns the current session index.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetSessionIndex)<br>
@@ -1084,7 +1086,7 @@ function DMC.GetSessionID() end
 ---print(sidx)
 ---```
 ---@return number
-function DMC.GetSessionIndex() end
+function Daemonic.GetSessionIndex() end
 
 ---Reads raw memory of any address.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ReadMemory)<br>
@@ -1114,7 +1116,7 @@ function DMC.GetSessionIndex() end
 ---@param memAddress number
 ---@param offset number
 ---@param type number
-function DMC.ReadMemory(memAddress, offset, type) end
+function Daemonic.ReadMemory(memAddress, offset, type) end
 
 ---Returns unit movement flags.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetUnitMovementFlags)<br>
@@ -1145,7 +1147,7 @@ function DMC.ReadMemory(memAddress, offset, type) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.GetUnitMovementFlags(unit) end
+function Daemonic.GetUnitMovementFlags(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#IsSpellPending)<br>
 ---Example:
@@ -1159,7 +1161,7 @@ function DMC.GetUnitMovementFlags(unit) end
 ---Spellfunc()
 ---```
 ---@return number
-function DMC.IsSpellPending() end
+function Daemonic.IsSpellPending() end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#CancelPendingSpell)<br>
 ---Example:
@@ -1172,7 +1174,7 @@ function DMC.IsSpellPending() end
 ---end
 ---Spellfunc()
 ---```
-function DMC.CancelPendingSpell() end
+function Daemonic.CancelPendingSpell() end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ClickPosition)<br>
 ---Example:
@@ -1184,7 +1186,7 @@ function DMC.CancelPendingSpell() end
 ---@param x number
 ---@param y number
 ---@param z number
-function DMC.ClickPosition(x, y, z) end
+function Daemonic.ClickPosition(x, y, z) end
 
 ---Returns 3D distance between two units/objects.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetDistance3D)<br>
@@ -1200,7 +1202,7 @@ function DMC.ClickPosition(x, y, z) end
 ---@param z2 number
 ---@overload fun(unit1:string, unit2:string):number
 ---@return number
-function DMC.GetDistance3D(x1, y1, z1, x2, y2, z2) end
+function Daemonic.GetDistance3D(x1, y1, z1, x2, y2, z2) end
 
 ---Returns player tile x,y coordinates.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetTileByPosition)<br>
@@ -1213,21 +1215,21 @@ function DMC.GetDistance3D(x1, y1, z1, x2, y2, z2) end
 ---@param y number
 ---@param z number
 ---@return number x, number y
-function DMC.GetTileByPosition(x, y, z) end
+function Daemonic.GetTileByPosition(x, y, z) end
 
 ---Unload maps from memory.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnloadMaps)<br>
 ---```lua
 ---UnloadMaps()
 ---```
-function DMC.UnloadMaps() end
+function Daemonic.UnloadMaps() end
 
 ---Kills your session process.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#KillSession)<br>
 ---```lua
 ---KillSession()
 ---```
-function DMC.KillSession() end
+function Daemonic.KillSession() end
 
 ---Returns status of Daemonic product.<br>
 ---[Docuementation](https://daemonic.cc/estore/daemonic-api/#GetProductStatus)<br>
@@ -1240,7 +1242,7 @@ function DMC.KillSession() end
 ---```
 ---@param productNumber number
 ---@return boolean
-function DMC.GetProductStatus(productNumber) end
+function Daemonic.GetProductStatus(productNumber) end
 
 ---Create a directory in specified path.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#CreateDirectory)<br>
@@ -1251,7 +1253,7 @@ function DMC.GetProductStatus(productNumber) end
 ---CreateDirectory(GetWowDirectory() .. "Example")
 ---```
 ---@param path string
-function DMC.CreateDirectory(path) end
+function Daemonic.CreateDirectory(path) end
 
 ---Writes a string to a file.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#WriteFile)<br>
@@ -1265,7 +1267,7 @@ function DMC.CreateDirectory(path) end
 ---@param content string
 ---@param append boolean
 ---@overload fun(path:string,content:string)
-function DMC.WriteFile(path, content, append) end
+function Daemonic.WriteFile(path, content, append) end
 
 ---Renames a file.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#RenameFile)<br>
@@ -1277,7 +1279,7 @@ function DMC.WriteFile(path, content, append) end
 ---```
 ---@param currentName string
 ---@param newName string
-function DMC.RenameFile(currentName, newName) end
+function Daemonic.RenameFile(currentName, newName) end
 
 ---Hash string using any of the three different Hash types as shown below.<br>
 ---Types: 
@@ -1304,7 +1306,7 @@ function DMC.RenameFile(currentName, newName) end
 ---@param key string
 ---@param type number?
 ---@return string
-function DMC.HmacString(string, key, type) end
+function Daemonic.HmacString(string, key, type) end
 
 ---Encode string to Base64.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#Base64EncodeString)<br>
@@ -1314,7 +1316,7 @@ function DMC.HmacString(string, key, type) end
 ---```
 ---@param str string
 ---@return string
-function DMC.Base64EncodeString(str) end
+function Daemonic.Base64EncodeString(str) end
 
 ---Decode Base64 string.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#Base64DecodeString)<br>
@@ -1324,7 +1326,7 @@ function DMC.Base64EncodeString(str) end
 ---```
 ---@param str string
 ---@return string
-function DMC.Base64DecodeString(str) end
+function Daemonic.Base64DecodeString(str) end
 
 ---Decrypt and runs encrypted string.<br>
 ---Types: 
@@ -1367,7 +1369,7 @@ function DMC.Base64DecodeString(str) end
 ---@param str string
 ---@param key string
 ---@param type number?
-function DMC.DecryptAndRunString(str, key, type) end
+function Daemonic.DecryptAndRunString(str, key, type) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#WorldToScreen)<br>
 ---Example:
@@ -1384,7 +1386,7 @@ function DMC.DecryptAndRunString(str, key, type) end
 ---@param y number
 ---@param z number
 ---@return number x, number y, boolean isOnScreen
-function DMC.WorldToScreen(x, y, z) end
+function Daemonic.WorldToScreen(x, y, z) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ScreenToWorld)<br>
 ---Flags:
@@ -1409,7 +1411,7 @@ function DMC.WorldToScreen(x, y, z) end
 ---@param x number
 ---@param y number
 ---@param flags number
-function DMC.ScreenToWorld(x, y, flags) end
+function Daemonic.ScreenToWorld(x, y, flags) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ObjectIsQuestObjective)<br>
 ---Example:
@@ -1423,7 +1425,7 @@ function DMC.ScreenToWorld(x, y, flags) end
 ---```
 ---@param unit string
 ---@return boolean
-function DMC.ObjectIsQuestObjective(unit) end
+function Daemonic.ObjectIsQuestObjective(unit) end
 
 ---Sets a unit as a target.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetTargetUnit)<br>
@@ -1432,7 +1434,7 @@ function DMC.ObjectIsQuestObjective(unit) end
 ---SetTargetUnit("player")
 ---```
 ---@param unit string
-function DMC.SetTargetUnit(unit) end
+function Daemonic.SetTargetUnit(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitFacing)<br>
 ---Example:
@@ -1451,7 +1453,7 @@ function DMC.SetTargetUnit(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitFacing(unit) end
+function Daemonic.UnitFacing(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitScale)<br>
 ---Example:
@@ -1460,7 +1462,7 @@ function DMC.UnitFacing(unit) end
 ---```
 ---@param unit string
 ---@return number
-function DMC.UnitScale(unit) end
+function Daemonic.UnitScale(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetKeyState)<br>
 ---Example:
@@ -1470,7 +1472,7 @@ function DMC.UnitScale(unit) end
 ---```
 ---@param key string
 ---@return number
-function DMC.GetKeyState(key) end
+function Daemonic.GetKeyState(key) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetWowAccountId)<br>
 ---Example:
@@ -1478,7 +1480,7 @@ function DMC.GetKeyState(key) end
 ---print(GetWowAccountId())
 ---```
 ---@return any, any, any
-function DMC.GetWowAccountId() end
+function Daemonic.GetWowAccountId() end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetAngles)<br>
 ---Example:
@@ -1493,7 +1495,7 @@ function DMC.GetWowAccountId() end
 ---@param z2 number
 ---@overload fun(unit1:string, unit2:string):facing:number, pitcher:number
 ---@return number facing, number pitch
-function DMC.GetAngles(x1, y1, z1, x2, y2, z2) end
+function Daemonic.GetAngles(x1, y1, z1, x2, y2, z2) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetCameraRotation)<br>
 ---Example:
@@ -1502,7 +1504,7 @@ function DMC.GetAngles(x1, y1, z1, x2, y2, z2) end
 ---print(x,y,z)
 ---```
 ---@return number x, number y, number z
-function DMC.GetCameraRotation() end
+function Daemonic.GetCameraRotation() end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetCameraRotation)<br>
 ---Example:
@@ -1512,7 +1514,7 @@ function DMC.GetCameraRotation() end
 ---@param x number
 ---@param y number
 ---@param z number
-function DMC.SetCameraRotation(x, y, z) end
+function Daemonic.SetCameraRotation(x, y, z) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#FaceDirection2)<br>
 ---Example:
@@ -1529,7 +1531,7 @@ function DMC.SetCameraRotation(x, y, z) end
 ---```
 ---@param radians number
 ---@param update boolean?
-function DMC.FaceDirection(radians, update) end
+function Daemonic.FaceDirection(radians, update) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetPitch)<br>
 ---Example:
@@ -1537,7 +1539,7 @@ function DMC.FaceDirection(radians, update) end
 ---SetPitch(1.5)
 ---```
 ---@param radians number
-function DMC.SetPitch(radians) end
+function Daemonic.SetPitch(radians) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#Interact)<br>
 ---Example
@@ -1548,7 +1550,7 @@ function DMC.SetPitch(radians) end
 ---Interact(guid)
 ---```
 ---@param unit string
-function DMC.Interact(unit) end
+function Daemonic.Interact(unit) end
 
 ---Clicks to move.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#MoveTo)<br>
@@ -1560,7 +1562,7 @@ function DMC.Interact(unit) end
 ---@param x number
 ---@param y number
 ---@param z number
-function DMC.MoveTo(x, y, z) end
+function Daemonic.MoveTo(x, y, z) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetCorpsePosition)<br>
 ---Example: 
@@ -1569,7 +1571,7 @@ function DMC.MoveTo(x, y, z) end
 ---print(x,y,z)
 ---```
 ---@return number x, number y, number z
-function DMC.GetCorpsePosition() end
+function Daemonic.GetCorpsePosition() end
 
 ---Finds a path between two positions for the given map ID<br>
 ---Note: By default, it will not swim in all liquids. To make it swim add a “true” parameter to end of FindPath parameters.<br>
@@ -1615,7 +1617,7 @@ function DMC.GetCorpsePosition() end
 ---@param z2 number
 ---@param swim boolean?
 ---@return number|nil
-function DMC.FindPath(mapID, x1, y1, z1, x2, y2, z2, swim) end
+function Daemonic.FindPath(mapID, x1, y1, z1, x2, y2, z2, swim) end
 
 ---Returns a path with path index.<br>
 ---Note: By default, it will not swim in all liquids. To make it swim add a “true” parameter to end of FindPath parameters.<br>
@@ -1654,7 +1656,7 @@ function DMC.FindPath(mapID, x1, y1, z1, x2, y2, z2, swim) end
 ---```
 ---@param index number
 ---@return number x, number y, number z
-function DMC.GetPathNode(index) end
+function Daemonic.GetPathNode(index) end
 
 ---Changes the default maps locations to any path you set.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetMapsPath)
@@ -1663,7 +1665,7 @@ function DMC.GetPathNode(index) end
 ---SetMapsPath("C:\\Maps\\")
 ---```
 ---@param path string
-function DMC.SetMapsPath(path) end
+function Daemonic.SetMapsPath(path) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetCameraPosition)<br>
 ---Example:
@@ -1672,7 +1674,7 @@ function DMC.SetMapsPath(path) end
 ---print(x,y,z)
 ---```
 ---@return number x, number y, number z
-function DMC.GetCameraPosition() end
+function Daemonic.GetCameraPosition() end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetLastClickPosition)<br>
 ---Example:
@@ -1681,7 +1683,7 @@ function DMC.GetCameraPosition() end
 ---print(x,y,z)
 ---```
 ---@return number x, number y, number z
-function DMC.GetLastClickPosition() end
+function Daemonic.GetLastClickPosition() end
 
 ---Returns current MapID.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetMapID)<br>
@@ -1690,7 +1692,7 @@ function DMC.GetLastClickPosition() end
 ---print(GetMapID())
 ---```
 ---@return number
-function DMC.GetMapID() end
+function Daemonic.GetMapID() end
 
 ---Moves and resizes game window to desired screen coordinates and size.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#MoveWindow)<br>
@@ -1704,7 +1706,7 @@ function DMC.GetMapID() end
 ---@param y number
 ---@param w number?
 ---@param h number?
-function DMC.MoveWindow(x, y, w, h) end
+function Daemonic.MoveWindow(x, y, w, h) end
 
 ---Returns unit effect spellID and location (x,y,z).<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitEffect)<br>
@@ -1714,7 +1716,7 @@ function DMC.MoveWindow(x, y, w, h) end
 ---```
 ---@param unit string
 ---@return number x, number y, number z, number spellID
-function DMC.UnitEffect(unit) end
+function Daemonic.UnitEffect(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GameObjectType)<br>
 ---Types:
@@ -1792,7 +1794,7 @@ function DMC.UnitEffect(unit) end
 ---```
 ---@param unit string
 ---@return number type
-function DMC.GameObjectType(unit) end
+function Daemonic.GameObjectType(unit) end
 
 ---Checks if object exits.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ObjectExists)<br>
@@ -1802,7 +1804,7 @@ function DMC.GameObjectType(unit) end
 ---```
 ---@param unit string
 ---@return boolean exists
-function DMC.ObjectExists(unit) end
+function Daemonic.ObjectExists(unit) end
 
 ---Sets text to clipboard.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetClipboardText)<br>
@@ -1811,7 +1813,7 @@ function DMC.ObjectExists(unit) end
 ---SetClipboardText("Test")
 ---```
 ---@param text string
-function DMC.SetClipboardText(text) end
+function Daemonic.SetClipboardText(text) end
 
 ---Returns text from clipboard.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetClipboardText)<br>
@@ -1820,7 +1822,7 @@ function DMC.SetClipboardText(text) end
 ---print(GetClipboardText())
 ---```
 ---@return string
-function DMC.GetClipboardText() end
+function Daemonic.GetClipboardText() end
 
 ---Returns 2D distance between units/objects.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetDistance2D)<br>
@@ -1836,7 +1838,7 @@ function DMC.GetClipboardText() end
 ---@param z2 number
 ---@overload fun(unit1:string, unit2: string):number
 ---@return number
-function DMC.GetDistance2D(x1, y1, z1, x2, y2, z2) end
+function Daemonic.GetDistance2D(x1, y1, z1, x2, y2, z2) end
 
 ---Copies file from source path to destination.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#CopyFile)<br>
@@ -1846,7 +1848,7 @@ function DMC.GetDistance2D(x1, y1, z1, x2, y2, z2) end
 ---```
 ---@param src string
 ---@param dest string
-function DMC.CopyFile(src, dest) end
+function Daemonic.CopyFile(src, dest) end
 
 ---Copies directory and all included files and sub directories from source path to destination.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#CopyDirectory)<br>
@@ -1856,7 +1858,7 @@ function DMC.CopyFile(src, dest) end
 ---```
 ---@param src string
 ---@param dest string
-function DMC.CopyDirectory(src, dest) end
+function Daemonic.CopyDirectory(src, dest) end
 
 ---Removes directory and all included files and sub directories.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#RemoveDirectory)<br>
@@ -1865,7 +1867,7 @@ function DMC.CopyDirectory(src, dest) end
 ---RemoveDirectory(GetExeDirectory() .. "MyAddonFolder")
 ---```
 ---@param path string
-function DMC.RemoveDirectory(path) end
+function Daemonic.RemoveDirectory(path) end
 
 ---Gets hardware ID.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetHWID)<br>
@@ -1874,7 +1876,7 @@ function DMC.RemoveDirectory(path) end
 ---print(GetHWID())
 ---```
 ---@return string
-function DMC.GetHWID() end
+function Daemonic.GetHWID() end
 
 ---Prevent screenshots and recordings.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#EnableAntiCapture)<br>
@@ -1882,7 +1884,7 @@ function DMC.GetHWID() end
 ---```lua
 ---EnableAntiCapture()
 ---```
-function DMC.EnableAntiCapture() end
+function Daemonic.EnableAntiCapture() end
 
 ---Finds closest point on mesh at a given threshold.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#FindClosestPointOnMesh)<br>
@@ -1913,7 +1915,7 @@ function DMC.EnableAntiCapture() end
 ---@param dy number
 ---@param dz number
 ---@return number res, number x, number y, number z
-function DMC.FindClosestPointOnMesh(mapid, x, y, z, dx, dy, dz) end
+function Daemonic.FindClosestPointOnMesh(mapid, x, y, z, dx, dy, dz) end
 
 ---Sets mouse over object.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetMouseOverObject)<br>
@@ -1922,7 +1924,7 @@ function DMC.FindClosestPointOnMesh(mapid, x, y, z, dx, dy, dz) end
 ---SetMouseOverObject(object)
 ---```
 ---@param object string
-function DMC.SetMouseOverObject(object) end
+function Daemonic.SetMouseOverObject(object) end
 
 ---Stops you from falling.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#StopFalling)<br>
@@ -1931,7 +1933,7 @@ function DMC.SetMouseOverObject(object) end
 ---SecureCode("JumpOrAscendStart")
 ---C_Timer.After(0.4, function() StopFalling() end)
 ---```
-function DMC.StopFalling() end
+function Daemonic.StopFalling() end
 
 ---Sets the value for a global variable (will not destroy after reload).<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#SetGlobalVar)<br>
@@ -1941,9 +1943,9 @@ function DMC.StopFalling() end
 ---```
 ---@param name string
 ---@param data any
-function DMC.SetGlobalVar(name, data) end
+function Daemonic.SetGlobalVar(name, data) end
 
----Gets the value of the global variable previously set by [SetGlobalVar](lua://DMC.SetGlobalVar).<br>
+---Gets the value of the global variable previously set by [SetGlobalVar](lua://Daemonic.SetGlobalVar).<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#GetGlobalVar)<br>
 ---Example:
 ---```lua
@@ -1951,7 +1953,7 @@ function DMC.SetGlobalVar(name, data) end
 ---```
 ---@param name string
 ---@return any data
-function DMC.GetGlobalVar(name) end
+function Daemonic.GetGlobalVar(name) end
 
 ---Reloads the game.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ReloadGame)<br>
@@ -1959,7 +1961,7 @@ function DMC.GetGlobalVar(name) end
 ---```lua
 ---ReloadGame()
 ---```
-function DMC.ReloadGame() end
+function Daemonic.ReloadGame() end
 
 ---Return if account is in Glue Screen.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#IsInGlue)<br>
@@ -1970,7 +1972,7 @@ function DMC.ReloadGame() end
 ---end
 ---```
 ---@return boolean
-function DMC.IsInGlue() end
+function Daemonic.IsInGlue() end
 
 ---Quickly disconnects user from server.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#DisconnectFromServer)<br>
@@ -1980,38 +1982,38 @@ function DMC.IsInGlue() end
 ---  DisconnectFromServer()
 ---end
 ---```
-function DMC.DisconnectFromServer() end
+function Daemonic.DisconnectFromServer() end
 
----DMC Draw Library
----@class DMC.Draw
-DMC.Draw = {}
+---Daemonic Draw Library
+---@class Daemonic.Draw
+Daemonic.Draw = {}
 
 ---@param wx number
 ---@param wy number
 ---@param wz number
 ---@return number|boolean sX, number|boolean sY
-function DMC.Draw:WorldToScreen(wx, wy, wz) end
+function Daemonic.Draw:WorldToScreen(wx, wy, wz) end
 
 ---@return number x, number y, number z, number rotX, number rotY
-function DMC.Draw:CameraPosition() end
+function Daemonic.Draw:CameraPosition() end
 
-function DMC.Draw:Map(value, fromLow, fromHigh, toLow, toHigh) end
+function Daemonic.Draw:Map(value, fromLow, fromHigh, toLow, toHigh) end
 
 ---@param r number 0-255
 ---@param g number 0-255
 ---@param b number 0-255
 ---@param a number|nil 0-255
-function DMC.Draw:SetColor(r, g, b, a) end
+function Daemonic.Draw:SetColor(r, g, b, a) end
 
 ---@param a number 0-255
-function DMC.Draw:SetAlpha(a) end
+function Daemonic.Draw:SetAlpha(a) end
 
 ---@param width number
-function DMC.Draw:SetWidth(width) end
+function Daemonic.Draw:SetWidth(width) end
 
 ---@param hex string
 ---@return number r, number g, number b
-function DMC.Draw:HexToRGB(hex) end
+function Daemonic.Draw:HexToRGB(hex) end
 
 ---@param ax number
 ---@param ay number
@@ -2020,14 +2022,14 @@ function DMC.Draw:HexToRGB(hex) end
 ---@param by number
 ---@param bz number
 ---@return number distance
-function DMC.Draw:Distance(ax, ay, az, bx, by, bz) end
+function Daemonic.Draw:Distance(ax, ay, az, bx, by, bz) end
 
 ---@param ax number
 ---@param ay number
 ---@param bx number
 ---@param by number
 ---@return number distance
-function DMC.Draw:Distance2D(ax, ay, bx, by) end
+function Daemonic.Draw:Distance2D(ax, ay, bx, by) end
 
 ---@param cx number
 ---@param cy number
@@ -2036,7 +2038,7 @@ function DMC.Draw:Distance2D(ax, ay, bx, by) end
 ---@param py number
 ---@param pz number
 ---@param r number
-function DMC.Draw:RotateX(cx, cy, cz, px, py, pz, r) end
+function Daemonic.Draw:RotateX(cx, cy, cz, px, py, pz, r) end
 
 ---@param cx number
 ---@param cy number
@@ -2045,7 +2047,7 @@ function DMC.Draw:RotateX(cx, cy, cz, px, py, pz, r) end
 ---@param py number
 ---@param pz number
 ---@param r number
-function DMC.Draw:RotateY(cx, cy, cz, px, py, pz, r) end
+function Daemonic.Draw:RotateY(cx, cy, cz, px, py, pz, r) end
 
 ---@param cx number
 ---@param cy number
@@ -2054,7 +2056,7 @@ function DMC.Draw:RotateY(cx, cy, cz, px, py, pz, r) end
 ---@param py number
 ---@param pz number
 ---@param r number
-function DMC.Draw:RotateZ(cx, cy, cz, px, py, pz, r) end
+function Daemonic.Draw:RotateZ(cx, cy, cz, px, py, pz, r) end
 
 ---@param sx number
 ---@param sy number
@@ -2062,46 +2064,46 @@ function DMC.Draw:RotateZ(cx, cy, cz, px, py, pz, r) end
 ---@param ex number
 ---@param ey number
 ---@param ez number
-function DMC.Draw:Line(sx, sy, sz, ex, ey, ez) end
+function Daemonic.Draw:Line(sx, sy, sz, ex, ey, ez) end
 
 ---@param sx number
 ---@param sy number
 ---@param ex number
 ---@param ey number
-function DMC.Draw:Line2D(sx, sy, ex, ey) end
+function Daemonic.Draw:Line2D(sx, sy, ex, ey) end
 
 ---@param x number
 ---@param y number
 ---@param z number
 ---@param radius number
 ---@param steps number|nil
-function DMC.Draw:Circle(x, y, z, radius, steps) end
+function Daemonic.Draw:Circle(x, y, z, radius, steps) end
 
 ---@param x number
 ---@param y number
 ---@param z number
 ---@param radius number
 ---@param steps number
-function DMC.Draw:GroundCircle(x, y, z, radius, steps) end
+function Daemonic.Draw:GroundCircle(x, y, z, radius, steps) end
 
 ---@param x number
 ---@param y number
 ---@param z number
 ---@param radius number
-function DMC.Draw:FilledCircle(x, y, z, radius) end
+function Daemonic.Draw:FilledCircle(x, y, z, radius) end
 
 ---@param x number
 ---@param y number
 ---@param z number
 ---@param radius number
-function DMC.Draw:Outline(x, y, z, radius) end
+function Daemonic.Draw:Outline(x, y, z, radius) end
 
 ---@param x number
 ---@param y number
 ---@param z number
 ---@param radius number
 ---@param height number
-function DMC.Draw:Cylinder(x, y, z, radius, height) end
+function Daemonic.Draw:Cylinder(x, y, z, radius, height) end
 
 ---@param x number
 ---@param y number
@@ -2109,7 +2111,7 @@ function DMC.Draw:Cylinder(x, y, z, radius, height) end
 ---@param radius number
 ---@param arc number
 ---@param rot number
-function DMC.Draw:Arc(x, y, z, radius, arc, rot) end
+function Daemonic.Draw:Arc(x, y, z, radius, arc, rot) end
 
 ---@param x number
 ---@param y number
@@ -2117,20 +2119,20 @@ function DMC.Draw:Arc(x, y, z, radius, arc, rot) end
 ---@param radius number
 ---@param arc number
 ---@param rot number
-function DMC.Draw:FilledArc(x, y, z, radius, arc, rot) end
+function Daemonic.Draw:FilledArc(x, y, z, radius, arc, rot) end
 
 ---@param x number
 ---@param y number
 ---@param z number
 ---@param rot number
 ---@param size number
-function DMC.Draw:Arrow(x, y, z, rot, size) end
+function Daemonic.Draw:Arrow(x, y, z, rot, size) end
 
 ---@param x number
 ---@param y number
 ---@param z number
 ---@param size number
-function DMC.Draw:Cross(x, y, z, size) end
+function Daemonic.Draw:Cross(x, y, z, size) end
 
 ---@param x number
 ---@param y number
@@ -2140,7 +2142,7 @@ function DMC.Draw:Cross(x, y, z, size) end
 ---@param rot number
 ---@param offsx number
 ---@param offsy number
-function DMC.Draw:Rectangle(x, y, z, width, length, rot, offsx, offsy) end
+function Daemonic.Draw:Rectangle(x, y, z, width, length, rot, offsx, offsy) end
 
 ---@param x number
 ---@param y number
@@ -2149,7 +2151,7 @@ function DMC.Draw:Rectangle(x, y, z, width, length, rot, offsx, offsy) end
 ---@param length number
 ---@param rot number
 ---@param offset number?
-function DMC.Draw:FilledRectangle(x, y, z, width, length, rot, offset) end
+function Daemonic.Draw:FilledRectangle(x, y, z, width, length, rot, offset) end
 
 ---@param vectors table
 ---@param x number
@@ -2158,7 +2160,7 @@ function DMC.Draw:FilledRectangle(x, y, z, width, length, rot, offset) end
 ---@param rotx number
 ---@param roty number
 ---@param rotz number
-function DMC.Draw:Array(vectors, x, y, z, rotx, roty, rotz) end
+function Daemonic.Draw:Array(vectors, x, y, z, rotx, roty, rotz) end
 
 ---@param text string
 ---@param font string
@@ -2166,36 +2168,36 @@ function DMC.Draw:Array(vectors, x, y, z, rotx, roty, rotz) end
 ---@param y number
 ---@param z number
 ---@param p number
-function DMC.Draw:Text(text, font, x, y, z, p) end
+function Daemonic.Draw:Text(text, font, x, y, z, p) end
 
 ---@param config table
 ---@param x number
 ---@param y number
 ---@param z number
 ---@param alphaA number
-function DMC.Draw:Texture(config, x, y, z, alphaA) end
+function Daemonic.Draw:Texture(config, x, y, z, alphaA) end
 
-function DMC.Draw:ClearCanvas() end
+function Daemonic.Draw:ClearCanvas() end
 
-function DMC.Draw:Update() end
+function Daemonic.Draw:Update() end
 
-function DMC.Draw:Helper() end
+function Daemonic.Draw:Helper() end
 
-function DMC.Draw:Enable() end
+function Daemonic.Draw:Enable() end
 
-function DMC.Draw:Disable() end
+function Daemonic.Draw:Disable() end
 
-function DMC.Draw:Enabled() end
+function Daemonic.Draw:Enabled() end
 
 ---@param callback function
-function DMC.Draw:Sync(callback) end
+function Daemonic.Draw:Sync(callback) end
 
 ---@param object table
-function DMC.Draw:SetColorFromObject(object) end
+function Daemonic.Draw:SetColorFromObject(object) end
 
 ---@param object table
-function DMC.Draw:GetColorFromObject(object) end
+function Daemonic.Draw:GetColorFromObject(object) end
 
----@param canvas DMC.Draw
----@return DMC.Draw
-function DMC.Draw:New(canvas) end
+---@param canvas Daemonic.Draw
+---@return Daemonic.Draw
+function Daemonic.Draw:New(canvas) end

@@ -19,7 +19,7 @@ Once installed, the extension will automatically add the Daemonic Lua definition
 Here’s an example of how to use Daemonic APIs with autocompletion and type checking:
 
 ```lua
----@type DMC
+---@type Daemonic
 local dmc = ...
 
 -- Use Daemonic APIs with IntelliSense support

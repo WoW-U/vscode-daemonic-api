@@ -2,7 +2,7 @@
   "name": "daemonic-lua-api",
   "displayName": "Daemonic Lua API",
   "description": "Daemonic Lua API",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "engines": {
     "vscode": "^1.98.0"
   },

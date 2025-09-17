@@ -1,44 +1,43 @@
-import * as vscode from 'vscode';
-import * as path from 'path';
+import * as vscode from "vscode";
 
-export function activate(context: vscode.ExtensionContext) {
-    // Path to your Lua definitions folder
-    const luaDefinitionsPath = path.join(context.extensionPath, 'lua-definitions');
+import { setIsDevelopment } from "./state";
+import * as luals from "./luals";
 
-    // Check if the Lua extension is installed
-    const luaExtension = vscode.extensions.getExtension('sumneko.lua');
-    if (!luaExtension) {
-        vscode.window.showErrorMessage('The Lua extension (sumneko.lua) is not installed.');
-        return;
-    }
+let isLoaded = false;
 
-    // Get the current workspace configuration
-    const config = vscode.workspace.getConfiguration('Lua', null);
+export async function activate(context: vscode.ExtensionContext) {
+	console.log("loaded", context.extension.id);
+	setIsDevelopment(context.extensionMode === vscode.ExtensionMode.Development);
+	registerActivationCommand(context);
 
-    // Get the current `workspace.library` setting
-    const workspaceLibrary: string[] = config.get('workspace.library', []);
-
-    const filtered: string[] = [];
-    for (const libPath of workspaceLibrary) {
-        if (libPath.indexOf("amstaffix.daemonic-lua-api") >= 0 || libPath.indexOf("vscode-daemonic-api") >= 0) {
-            continue;
-        }
-
-        filtered.push(libPath);
-    }
-    filtered.push(luaDefinitionsPath);
-    // Determine the configuration target (workspace or global)
-    const target = vscode.workspace.workspaceFolders ? vscode.ConfigurationTarget.Workspace : vscode.ConfigurationTarget.Global;
-
-    // Add the path to the `workspace.library` setting
-    config.update('workspace.library', filtered, target)
-        .then(() => {
-            // vscode.window.showInformationMessage(`Added Daemonic Lua definitions to ${target === vscode.ConfigurationTarget.Workspace ? 'workspace' : 'global'} settings: ${luaDefinitionsPath}`);
-        }, (error) => {
-            vscode.window.showErrorMessage(`Failed to update settings: ${error}`);
-        });
+	if (luals.isConfigured()) {
+		activateDaemonicExtension(context);
+	}
 }
 
-export function deactivate() {
-    console.log('Extension "lua-definitions-helper" is now deactivated.');
+async function activateDaemonicExtension(context: vscode.ExtensionContext) {
+	isLoaded = true;
+	luals.configLuaLS(false);
+}
+
+function registerActivationCommand(context: vscode.ExtensionContext) {
+	const handler = () => {
+		if (!isLoaded) {
+			const daemonic_config = vscode.workspace.getConfiguration("daemonicAPI");
+			// some users expect the extension to just work while not in an addon or workspace
+			if (vscode.workspace.workspaceFolders) {
+				daemonic_config.update("luals.configurationScope", "Workspace", vscode.ConfigurationTarget.Global);
+				vscode.window.showInformationMessage("Activated Daemonic API extension (Workspace settings).");
+			}
+			else {
+				daemonic_config.update("luals.configurationScope", "User", vscode.ConfigurationTarget.Global);
+				vscode.window.showInformationMessage("Enabled Daemonic API extension (User settings).");
+			}
+			activateDaemonicExtension(context);
+		}
+		else {
+			vscode.window.showInformationMessage("Daemonic API extension is already activated.");
+		}
+	};
+	context.subscriptions.push(vscode.commands.registerCommand("daemonicAPI.activateExtension", handler));
 }

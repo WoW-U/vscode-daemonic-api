@@ -7,15 +7,18 @@ This plugin is community driven, so it would not automatically get updates when 
 
 [Join Discord](https://discord.gg/Gc4GjArZus) to discuss and participate.
 
+## Instruction
+
+- Press `CTRL + SHIFT + P` to open the command palette
+- type `Activate Daemonic API Extension` and press enter
+
+![example](img/command-palete-example.png)
+
 ## Features
 
 - Added all methods from [official API documentation](https://daemonic.cc/estore/daemonic-api/)
 
-## Usage
-
-Once installed, the extension will automatically add the Daemonic Lua definitions to your workspace. You can start using Daemonic APIs with full IntelliSense support.
-
-### Example
+## Example
 Here’s an example of how to use Daemonic APIs with autocompletion and type checking:
 
 ```lua

@@ -2,7 +2,7 @@
   "name": "daemonic-lua-api",
   "displayName": "Daemonic Lua API",
   "description": "Daemonic Lua API",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "engines": {
     "vscode": "^1.98.0"
   },
@@ -15,11 +15,9 @@
     "url": "https://github.com/WoW-U/vscode-daemonic-api/tree/main"
   },
   "activationEvents": [
-    "onStartupFinished"
+    "onLanguage:lua"
   ],
   "main": "./out/extension.js",
-  "contributes": {
-  },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
@@ -40,6 +38,32 @@
     "@vscode/test-electron": "^2.4.1"
   },
   "extensionDependencies": [
-		"sumneko.lua"
-	]
+    "sumneko.lua"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "daemonicAPI.activateExtension",
+        "title": "Activate Daemonic API extension"
+      }
+    ],
+    "configuration": {
+      "title": "Daemonic API",
+      "properties": {
+        "daemonicAPI.luals.configurationScope": {
+          "type": "string",
+          "default": "Workspace",
+          "markdownDescription": "The configuration scope for automatically configured LuaLS settings",
+          "enum": [
+            "User",
+            "Workspace"
+          ],
+          "enumDescriptions": [
+            "Settings that apply globally to any instance of VS Code you open.",
+            "Settings stored inside your workspace and only apply when the workspace is opened."
+          ]
+        }
+      }
+    }
+  }
 }

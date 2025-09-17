@@ -4,6 +4,8 @@
 Daemonic = {}
 
 ---@alias DMC Daemonic
+---@alias Daemonic.Object string
+---@alias Daemonic.ObjectReference UnitToken|Daemonic.Object
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#SecureCode)<br>
 ---Example:
@@ -125,7 +127,7 @@ function Daemonic.IsWritablePath(path) end
 ---local x, y, z = GetUnitPosition("player")
 ---print(x,y,z)
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number x, number y, number z
 function Daemonic.GetUnitPosition(unit) end
 
@@ -304,7 +306,7 @@ function Daemonic.GetObjectCount() end
 ---```
 ---@see Daemonic.GetObjectCount
 ---@param index number
----@return string unit
+---@return Daemonic.Object unit
 function Daemonic.GetObjectWithIndex(index) end
 
 ---Reads raw memory of a unit.
@@ -332,7 +334,7 @@ function Daemonic.GetObjectWithIndex(index) end
 ---```lua
 ---print(ObjectField("player", 0x18, 15)) -- Will print GUID
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@param offset number
 ---@param type number
 function Daemonic.ObjectField(unit, offset, type) end
@@ -342,7 +344,7 @@ function Daemonic.ObjectField(unit, offset, type) end
 ---```lua
 ---UnitPitch("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitPitch(unit) end
 
@@ -351,8 +353,8 @@ function Daemonic.UnitPitch(unit) end
 ---```lua
 ---UnitSummonedBy("target")
 ---```
----@param unit string
----@return string
+---@param unit Daemonic.ObjectReference
+---@return Daemonic.Object
 function Daemonic.UnitSummonedBy(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
@@ -360,8 +362,8 @@ function Daemonic.UnitSummonedBy(unit) end
 ---```lua
 ---UnitCreatedBy("target")
 ---```
----@param unit string
----@return string
+---@param unit Daemonic.ObjectReference
+---@return Daemonic.Object
 function Daemonic.UnitCreatedBy(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
@@ -369,8 +371,8 @@ function Daemonic.UnitCreatedBy(unit) end
 ---```lua
 ---UnitTarget("target")
 ---```
----@param unit string
----@return string
+---@param unit Daemonic.ObjectReference
+---@return Daemonic.Object
 function Daemonic.UnitTarget(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
@@ -378,7 +380,7 @@ function Daemonic.UnitTarget(unit) end
 ---```lua
 ---UnitHeight("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitHeight(unit) end
 
@@ -387,7 +389,7 @@ function Daemonic.UnitHeight(unit) end
 ---```lua
 ---UnitFlags("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitFlags(unit) end
 
@@ -396,7 +398,7 @@ function Daemonic.UnitFlags(unit) end
 ---```lua
 ---UnitHeight2("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitFlags2(unit) end
 
@@ -405,7 +407,7 @@ function Daemonic.UnitFlags2(unit) end
 ---```lua
 ---UnitHeight3("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitFlags3(unit) end
 
@@ -414,7 +416,7 @@ function Daemonic.UnitFlags3(unit) end
 ---```lua
 ---UnitNpcFlags("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitNpcFlags(unit) end
 
@@ -423,7 +425,7 @@ function Daemonic.UnitNpcFlags(unit) end
 ---```lua
 ---UnitBoundingRadius("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitBoundingRadius(unit) end
 
@@ -432,7 +434,7 @@ function Daemonic.UnitBoundingRadius(unit) end
 ---```lua
 ---UnitCombatReach("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return any
 function Daemonic.UnitCombatReach(unit) end
 
@@ -441,7 +443,7 @@ function Daemonic.UnitCombatReach(unit) end
 ---```lua
 ---UnitDynamicFlags("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitDynamicFlags(unit) end
 
@@ -450,7 +452,7 @@ function Daemonic.UnitDynamicFlags(unit) end
 ---```lua
 ---UnitAnimationFlags("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitAnimationFlags(unit) end
 
@@ -459,7 +461,7 @@ function Daemonic.UnitAnimationFlags(unit) end
 ---```lua
 ---UnitIsSkinnable("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return boolean
 function Daemonic.UnitIsSkinnable(unit) end
 
@@ -468,7 +470,7 @@ function Daemonic.UnitIsSkinnable(unit) end
 ---```lua
 ---UnitIsLootable("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return boolean
 function Daemonic.UnitIsLootable(unit) end
 
@@ -477,8 +479,8 @@ function Daemonic.UnitIsLootable(unit) end
 ---```lua
 ---UnitCastingTarget("target")
 ---```
----@param unit string
----@return string
+---@param unit Daemonic.ObjectReference
+---@return Daemonic.Object
 function Daemonic.UnitCastingTarget(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitField)<br>
@@ -486,7 +488,7 @@ function Daemonic.UnitCastingTarget(unit) end
 ---```lua
 ---UnitIsMounted("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return boolean
 function Daemonic.UnitIsMounted(unit) end
 
@@ -495,7 +497,7 @@ function Daemonic.UnitIsMounted(unit) end
 ---```lua
 ---UnitIsOutdoors("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return boolean
 function Daemonic.UnitIsOutdoors(unit) end
 
@@ -504,7 +506,7 @@ function Daemonic.UnitIsOutdoors(unit) end
 ---```lua
 ---UnitIsSubmerged("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return boolean
 function Daemonic.UnitIsSubmerged(unit) end
 
@@ -524,7 +526,7 @@ function Daemonic.UnitIsSubmerged(unit) end
 ---SUBMERGED = 9,
 ---UnitStandStateType("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitStandStateType(unit) end
 
@@ -562,13 +564,13 @@ function Daemonic.MinimizeWindow() end
 ---local x, y, z = GetUnitRawPosition("player")
 ---print(x,y,z)
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number x, number y, number z
 function Daemonic.GetUnitRawPosition(unit) end
 
 ---Returns the raw direction a unit is facing.<br>
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitRawFacing)<br>
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitRawFacing(unit) end
 
@@ -585,7 +587,7 @@ function Daemonic.ClearTargetUnit() end
 ---```lua
 ---UnitIsSitting("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return boolean
 function Daemonic.UnitIsSitting(unit) end
 
@@ -594,7 +596,7 @@ function Daemonic.UnitIsSitting(unit) end
 ---```lua
 ---UnitSpecializationID("target")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitSpecializationID(unit) end
 
@@ -619,7 +621,7 @@ function Daemonic.IsGUID(guid) end
 ---```lua
 ---print(ObjectName("player"))
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return string Name
 function Daemonic.ObjectName(unit) end
 
@@ -634,7 +636,7 @@ function Daemonic.ObjectName(unit) end
 ---   end
 ---end
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number ID
 function Daemonic.ObjectID(unit) end
 
@@ -702,7 +704,7 @@ function Daemonic.GetMissileWithIndex(index) end
 ---```lua
 ---print(ObjectType("player"))
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number Type
 function Daemonic.ObjectType(unit) end
 
@@ -729,7 +731,7 @@ function Daemonic.ObjectType(unit) end
 ---```lua
 ---print(UnitCreatureTypeId("target"))
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number CreatureType
 function Daemonic.UnitCreatureTypeId(unit) end
 
@@ -751,7 +753,7 @@ function Daemonic.WipeString(str) end
 ---local count = GetAuraCount('player')
 ---print(count)
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@param spellID number?
 ---@return number
 function Daemonic.GetAuraCount(unit, spellID) end
@@ -790,7 +792,7 @@ function Daemonic.GetSpellDispelType(spellID) end
 ---```lua
 ---local horizontalMomentum, verticalMomentum = GetDragonridingSpeed("player")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number horizontalMomentum, number verticalMomentum
 function Daemonic.GetDragonridingSpeed(unit) end
 
@@ -802,8 +804,8 @@ function Daemonic.GetDragonridingSpeed(unit) end
 ---print(ObjectName(ObjectMover('player')))
 ---print(GetUnitPosition(ObjectMover('player')))
 ---```
----@param unit string
----@return string
+---@param unit Daemonic.ObjectReference
+---@return Daemonic.Object
 function Daemonic.ObjectMover(unit) end
 
 ---Sets any data for any given offset.<br>
@@ -812,7 +814,7 @@ function Daemonic.ObjectMover(unit) end
 ---```lua
 ---SetObjectField("player", 0x11C, 10, 1.5) -- Will set player pitch to 1.5 (Retail)
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@param offset number
 ---@param type number
 ---@param data number
@@ -1145,7 +1147,7 @@ function Daemonic.ReadMemory(memAddress, offset, type) end
 ---```lua
 ---print(GetUnitMovementFlags("player"))
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.GetUnitMovementFlags(unit) end
 
@@ -1200,7 +1202,7 @@ function Daemonic.ClickPosition(x, y, z) end
 ---@param x2 number
 ---@param y2 number
 ---@param z2 number
----@overload fun(unit1:string, unit2:string):number
+---@overload fun(unit1:Daemonic.ObjectReference, unit2:Daemonic.ObjectReference):number
 ---@return number
 function Daemonic.GetDistance3D(x1, y1, z1, x2, y2, z2) end
 
@@ -1423,7 +1425,7 @@ function Daemonic.ScreenToWorld(x, y, flags) end
 ---  end
 ---end
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return boolean
 function Daemonic.ObjectIsQuestObjective(unit) end
 
@@ -1433,7 +1435,7 @@ function Daemonic.ObjectIsQuestObjective(unit) end
 ---```lua
 ---SetTargetUnit("player")
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 function Daemonic.SetTargetUnit(unit) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#UnitFacing)<br>
@@ -1451,7 +1453,7 @@ function Daemonic.SetTargetUnit(unit) end
 ---end
 ---print(IsUnitFacing())
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitFacing(unit) end
 
@@ -1460,7 +1462,7 @@ function Daemonic.UnitFacing(unit) end
 ---```lua
 ---print(UnitScale('target'))
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number
 function Daemonic.UnitScale(unit) end
 
@@ -1493,7 +1495,7 @@ function Daemonic.GetWowAccountId() end
 ---@param x2 number
 ---@param y2 number
 ---@param z2 number
----@overload fun(unit1:string, unit2:string):facing:number, pitcher:number
+---@overload fun(unit1:Daemonic.ObjectReference, unit2:Daemonic.ObjectReference):facing:number, pitcher:number
 ---@return number facing, number pitch
 function Daemonic.GetAngles(x1, y1, z1, x2, y2, z2) end
 
@@ -1549,7 +1551,7 @@ function Daemonic.SetPitch(radians) end
 ---local guid = UnitGUID("target")
 ---Interact(guid)
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 function Daemonic.Interact(unit) end
 
 ---Clicks to move.<br>
@@ -1714,7 +1716,7 @@ function Daemonic.MoveWindow(x, y, w, h) end
 ---```lua
 ---local x, y, z, spellID = UnitEffect(unit)
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number x, number y, number z, number spellID
 function Daemonic.UnitEffect(unit) end
 
@@ -1792,7 +1794,7 @@ function Daemonic.UnitEffect(unit) end
 ---   end
 ---end
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return number type
 function Daemonic.GameObjectType(unit) end
 
@@ -1802,7 +1804,7 @@ function Daemonic.GameObjectType(unit) end
 ---```lua
 ---print(ObjectExists("target"))
 ---```
----@param unit string
+---@param unit Daemonic.ObjectReference
 ---@return boolean exists
 function Daemonic.ObjectExists(unit) end
 
@@ -1836,7 +1838,7 @@ function Daemonic.GetClipboardText() end
 ---@param x2 number
 ---@param y2 number
 ---@param z2 number
----@overload fun(unit1:string, unit2: string):number
+---@overload fun(unit1:Daemonic.ObjectReference, unit2: Daemonic.ObjectReference):number
 ---@return number
 function Daemonic.GetDistance2D(x1, y1, z1, x2, y2, z2) end
 
@@ -1923,7 +1925,7 @@ function Daemonic.FindClosestPointOnMesh(mapid, x, y, z, dx, dy, dz) end
 ---```lua
 ---SetMouseOverObject(object)
 ---```
----@param object string
+---@param object Daemonic.ObjectReference
 function Daemonic.SetMouseOverObject(object) end
 
 ---Stops you from falling.<br>

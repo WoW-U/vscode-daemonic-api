@@ -1413,6 +1413,7 @@ function Daemonic.WorldToScreen(x, y, z) end
 ---@param x number
 ---@param y number
 ---@param flags number
+---@return number x, number y, number z
 function Daemonic.ScreenToWorld(x, y, flags) end
 
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ObjectIsQuestObjective)<br>

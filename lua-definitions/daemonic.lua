@@ -613,7 +613,7 @@ function Daemonic.UnitSpecializationID(unit) end
 ---```
 ---@param guid string
 ---@return boolean
-function Daemonic.IsGUID(guid) end
+function Daemonic.IsGuid(guid) end
 
 ---Returns the display name of a unit.
 ---[Documentation](https://daemonic.cc/estore/daemonic-api/#ObjectName)<br>

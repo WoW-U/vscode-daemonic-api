@@ -1987,6 +1987,18 @@ function Daemonic.IsInGlue() end
 ---```
 function Daemonic.DisconnectFromServer() end
 
+---Unwraps secret values from a secret LuaValueReference object.<br>
+---Example:
+---```lua
+---local healthsecret = UnitHealth("player") -- a secret value that can only be displayed, not compared or acted on.
+---print(tostring(issecretvalue(healthsecret))) -- returns true
+---local health = Daemonic.secretunwrap(healthsecret) -- unwraps the secret value so it can be used.
+---print(tostring(issecretvalue(health))) -- returns false
+---```
+---@param ... any
+---@return any
+function Daemonic.secretunwrap(...) end
+
 ---Daemonic Draw Library
 ---@class Daemonic.Draw
 Daemonic.Draw = {}
